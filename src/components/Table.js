@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import AddHeroeModal from './AddHeroeModal';
+import AddHeroModal from './AddHeroModal';
 
 export default function Table() {
 	const [heroes, setHeroes] = useState([]);
@@ -11,9 +11,9 @@ export default function Table() {
 			.get('https://swapi.dev/api/people/')
 			.then((res) => {
 				if (res.data.results) {
-					res.data.results.forEach((heroe) => {
-						axios.get(heroe.homeworld).then((res) => {
-							const { name, birth_year, gender } = heroe;
+					res.data.results.forEach((hero) => {
+						axios.get(hero.homeworld).then((res) => {
+							const { name, birth_year, gender } = hero;
 							const planet = res.data.name;
 							setHeroes((heroes) => [
 								...heroes,
@@ -29,8 +29,8 @@ export default function Table() {
 	}, []);
 
 	function renderTableBody() {
-		return heroes.map((heroe, index) => {
-			const { name, birth_year, gender, planet } = heroe;
+		return heroes.map((hero, index) => {
+			const { name, birth_year, gender, planet } = hero;
 			if (
 				name.toUpperCase().indexOf(search.toUpperCase()) > -1 ||
 				birth_year.toUpperCase().indexOf(search.toUpperCase()) > -1 ||
@@ -48,7 +48,7 @@ export default function Table() {
 								type='button'
 								id={'deleteBtn' + index}
 								hidden
-								onClick={() => deleteHeroe(index)}
+								onClick={() => deleteHero(index)}
 							/>
 							<label htmlFor={'deleteBtn' + index}>
 								<i className='fa fa-trash-o' aria-hidden='true'></i>
@@ -60,8 +60,8 @@ export default function Table() {
 		});
 	}
 
-	function deleteHeroe(index) {
-		setHeroes(heroes.filter((heroe) => heroe !== heroes[index]));
+	function deleteHero(index) {
+		setHeroes(heroes.filter((hero) => hero !== heroes[index]));
 	}
 
 	return (
@@ -85,7 +85,7 @@ export default function Table() {
 							<th scope='col'>Gender</th>
 							<th scope='col'>Planet</th>
 							<th scope='col'>
-								<AddHeroeModal heroes={heroes} setHeroes={setHeroes} />
+								<AddHeroModal heroes={heroes} setHeroes={setHeroes} />
 							</th>
 						</tr>
 					</thead>

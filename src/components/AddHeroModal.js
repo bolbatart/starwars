@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-export default function AddHeroeModal({ setHeroes, heroes }) {
-	const [newHeroe, setNewHeroe] = useState({
+export default function AddHeroModal({ setHeroes, heroes }) {
+	const [newHero, setNewHero] = useState({
 		name: '',
 		birh_year: '',
 		gender: '',
@@ -10,11 +10,11 @@ export default function AddHeroeModal({ setHeroes, heroes }) {
 
 	function handleChange(e) {
 		const { name, value } = e.target;
-		setNewHeroe({ ...newHeroe, [name]: value });
+		setNewHero({ ...newHero, [name]: value });
 	}
 
-	function addHeroe() {
-		setHeroes([...heroes, newHeroe]);
+	function addHero() {
+		setHeroes([...heroes, newHero]);
 	}
 
 	return (
@@ -41,7 +41,7 @@ export default function AddHeroeModal({ setHeroes, heroes }) {
 						<form>
 							<div className='modal-header'>
 								<h5 className='modal-title' id='exampleModalLabel'>
-									Add heroe
+									Add hero
 								</h5>
 								<button
 									type='button'
@@ -55,42 +55,42 @@ export default function AddHeroeModal({ setHeroes, heroes }) {
 							<div className='modal-body'>
 								<div className='container'>
 									<div className='form-group'>
-										<label htmlFor='heroeName'>Full Name</label>
+										<label htmlFor='heroName'>Full Name</label>
 										<input
 											type='text'
 											className='form-control'
-											id='heroeName'
+											id='heroName'
 											aria-describedby='emailHelp'
 											name='name'
 											onChange={handleChange}
 										/>
 									</div>
 									<div className='form-group'>
-										<label htmlFor='heroeBirthYear'>Birth Year</label>
+										<label htmlFor='heroBirthYear'>Birth Year</label>
 										<input
 											type='text'
 											className='form-control'
-											id='heroeBirthYear'
+											id='heroBirthYear'
 											name='birth_year'
 											onChange={handleChange}
 										/>
 									</div>
 									<div className='form-group'>
-										<label htmlFor='heroeGender'>Gender</label>
+										<label htmlFor='heroGender'>Gender</label>
 										<input
 											type='text'
 											className='form-control'
-											id='heroeGender'
+											id='heroGender'
 											name='gender'
 											onChange={handleChange}
 										/>
 									</div>
 									<div className='form-group'>
-										<label htmlFor='heroePlanet'>Planet</label>
+										<label htmlFor='heroPlanet'>Planet</label>
 										<input
 											type='text'
 											className='form-control'
-											id='heroePlanet'
+											id='heroPlanet'
 											name='planet'
 											onChange={handleChange}
 										/>
@@ -102,7 +102,7 @@ export default function AddHeroeModal({ setHeroes, heroes }) {
 									type='button'
 									className='btn btn-primary'
 									data-dismiss='modal'
-									onClick={addHeroe}
+									onClick={addHero}
 								>
 									Add
 								</button>
